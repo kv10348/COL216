@@ -1,0 +1,14 @@
+.data
+nl: .asciiz "\n"
+	.text
+	
+main:
+	add $sp, $sp, $t1
+    sw $t1, 0($sp)
+	sw $t4, 4($sp)
+	add $t1, $t3, $t1
+    sub $a0, $t1, $t3
+	lw $t1, 0($sp)
+    lw $ra, 4($sp)
+    add $sp, $sp, $t6
+    end

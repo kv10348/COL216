@@ -1,0 +1,10 @@
+.data
+nl: .asciiz "\n"
+	.text
+	
+main:
+    sw $t1, 10($t1)
+	lw $t4, 10($t1)
+    add $t4, $t1, $t3
+    sw $t4, 10($t4)
+    lw $t4, 10($t4)

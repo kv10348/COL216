@@ -1,0 +1,30 @@
+.data
+nl: .asciiz "\n"
+	.text
+	
+main:
+	add $t0, $t1, $t3		
+	sub $t2, $t1, $t3
+	sw $t1, 10($t1)
+	lw $t4, 10($t1)
+	add $a0, $t0, $t1		# checking for loop condition
+	j loop				#if loop is working fine then it would not execute next inst.
+	add $a1, $t0, $t1
+	sub $a2, $t0, $t1
+loop:
+	
+	bgtz $a1, end			#another branch condition
+	add $a1, $t2, $a1
+	j loop
+end:
+	add $v0, $a1, $a1		#another dependency of add and sub
+	sub $v1, $v0, $a1
+	lw $a2, 10($t1)			#dependency of lw with add(it can any R type inst )
+	add $a3, $a2, $a2
+	jal loop1
+	add $t7, $t6, $t4
+	end
+
+loop1:
+	add $t6, $t3, $t4
+	jr
